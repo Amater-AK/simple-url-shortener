@@ -131,7 +131,7 @@ if($_SERVER["REQUEST_URI"] !== "/") {
             header("Location: /");
             exit();
         }
-        $full_url = $data["full_url"];
+        $full_url = htmlentities($data["full_url"], ENT_QUOTES, "UTF-8");
 
         // Перенаправляем по полной ссылке
         header("Location: $full_url");
