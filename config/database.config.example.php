@@ -1,6 +1,6 @@
 <?php
 
-$config = [
+$db_config = [
     "database" : [
         "dbname" : "-test.demo-",
         "host" : "127.0.0.1",
