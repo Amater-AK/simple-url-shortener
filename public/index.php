@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-if(file_exists("./config.php")) {
-    require_once "./config.php";
+// TODO:Проверка всех конфигов
+if(file_exists(__DIR__ ."/../config/database.config.php")) {
+    require_once __DIR__ ."/../config/database.config.php";
 } else {
-    echo "Please make config.php from config.example.php.";
+    echo "Please make database.config.php from database.config.example.php.";
     exit();
 }
 
