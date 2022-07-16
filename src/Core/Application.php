@@ -4,11 +4,13 @@ declare(strict_types=1);
 namespace SUS\Core;
 
 class Application {
-    public function __construct() {
-
+    private Router $router;
+    
+    public function __construct(Router $router) {
+        $this->router = $router;
     }
 
     public function run() {
-        echo "App->run()";
+        $this->router->resolve();
     }
 }
