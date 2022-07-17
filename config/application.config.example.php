@@ -1,7 +1,7 @@
 <?php
 
 $app_config = [
-    "application" : [
+    "application" => [
         
     ]
 ];
