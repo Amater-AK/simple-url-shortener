@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-if(file_exists("./config.php")) {
-    require_once "./config.php";
+// TODO:Проверка всех конфигов
+if(file_exists(__DIR__ ."/../config/database.config.php")) {
+    require_once __DIR__ ."/../config/database.config.php";
 } else {
-    echo "Please make config.php from config.example.php.";
+    echo "Please make database.config.php from database.config.example.php.";
     exit();
 }
 
@@ -68,8 +69,8 @@ function Decode(string $encoded, int $base, array $map): int {
     return $result;
 }
 
-$dsn = "mysql:dbname=" .$config["database"]["dbname"] .";host=" .$config["database"]["host"] .";charset=" .$config["database"]["charset"];
-$db = new PDO($dsn, $config["database"]["user"], $config["database"]["pass"]);
+$dsn = "mysql:dbname=" .$db_config["database"]["dbname"] .";host=" .$db_config["database"]["host"] .";charset=" .$db_config["database"]["charset"];
+$db = new PDO($dsn, $db_config["database"]["user"], $db_config["database"]["pass"]);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
@@ -106,6 +107,9 @@ if(isset($_POST["submit_url"])) {
     }
 }
 
+// Маршрутизация
+// "Проходим" по всем зарегистрированным путям
+// И если совпадений не найдено, то предполагаем, что переданна короткая ссылка
 if($_SERVER["REQUEST_URI"] !== "/") {
     $recieved_url = trim($_SERVER["REQUEST_URI"], "/");
     $recieved_url = filter_var($recieved_url, FILTER_SANITIZE_ENCODED) ?: "";

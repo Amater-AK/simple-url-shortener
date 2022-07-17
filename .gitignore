@@ -1,2 +1,4 @@
 /vendor/
-/config.php
+/config/application.config.php
+/config/database.config.php
+/config/encryption.config.php

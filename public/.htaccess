@@ -4,6 +4,10 @@ Options +FollowSymlinks
 RewriteEngine On
 RewriteBase /
 
+# Exclude /media directory and images from rewrite rules
+##RewriteRule ^(media)/*$ - [L]
+##RewriteRule \.(jpg|jpeg|png|gif|ico)$ - [L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [L,QSA]

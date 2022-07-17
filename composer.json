@@ -1,0 +1,16 @@
+{
+    "name": "amater/sus.demo",
+    "description": "Simple URL Shortener.",
+    "authors": [
+        {
+            "name": "Andrey Kupetskov",
+            "email": "amater131089@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "SUS\\" : "src/"
+        }
+    }
+}
